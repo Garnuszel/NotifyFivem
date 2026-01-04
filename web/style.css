@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --bg-card: #191b20;
+
+    --info: #3b82f6;
+    --info-bg: rgba(59, 130, 246, 0.18);
+    --info-border: rgba(59, 130, 246, 0.45);
+
+    --success: #22c55e;
+    --success-bg: rgba(34, 197, 94, 0.18);
+    --success-border: rgba(34, 197, 94, 0.45);
+
+    --warning: #f59e0b;
+    --warning-bg: rgba(245, 158, 11, 0.18);
+    --warning-border: rgba(245, 158, 11, 0.45);
+
+    --error: #ef4444;
+    --error-bg: rgba(239, 68, 68, 0.18);
+    --error-border: rgba(239, 68, 68, 0.45);
+
+    --text-main: #f1f5f9;
+}
+
+body {
+    overflow: hidden;
+    font-family: "Poppins", sans-serif;
+}
+
+.notify-container {
+    top: 10%;
+    right: 2%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.notify {
+    background-color: var(--bg-card);
+    padding: 0.6rem 0.9rem;
+    width: 18rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    border-radius: 0.75rem;
+    border: 0.063rem solid #2c3038;
+}
+
+.icon {
+    background: linear-gradient(180deg,var(--info-bg),rgba(59, 130, 246, 0.05));
+    width: 2.4rem;
+    height: 2.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    border: 0.063rem solid var(--info-border);
+    flex-shrink: 0;
+}
+
+.icon i {
+    color: var(--info);
+    font-size: 1rem;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    line-height: 1.15;
+    min-width: 0;
+    flex: 1;
+}
+
+.title {
+    color: var(--info);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.019rem;
+    text-transform: uppercase;
+}
+
+.desc {
+    color: var(--text-main);
+    font-weight: 500;
+    font-size: 0.85rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.notify.success .icon {
+    background: linear-gradient(180deg, var(--success-bg), rgba(34, 197, 94, 0.05));
+    border: 0.063rem solid var(--success-border);
+}
+
+.notify.success .icon i,
+.notify.success .title {
+    color: var(--success);
+}
+
+.notify.warning .icon {
+    background: linear-gradient(180deg, var(--warning-bg), rgba(245, 158, 11, 0.05));
+    border: 0.063rem solid var(--warning-border);
+}
+
+.notify.warning .icon i,
+.notify.warning .title {
+    color: var(--warning);
+}
+
+.notify.error .icon {
+    background: linear-gradient(180deg, var(--error-bg), rgba(239, 68, 68, 0.05));
+    border: 0.063rem solid var(--error-border);
+}
+
+.notify.error .icon i,
+.notify.error .title {
+    color: var(--error);
+}
+
+@keyframes notifyIn {
+    from {
+        opacity: 0;
+        transform: translateX(1.5rem) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes notifyOut {
+    from {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(1.5rem) scale(0.98);
+    }
+}
+
+.notify {
+    animation: notifyIn 260ms cubic-bezier(.2,.8,.2,1) both;
+}
+
+.notify.hide {
+    animation: notifyOut 220ms cubic-bezier(.4,0,.8,.2) both;
+}
